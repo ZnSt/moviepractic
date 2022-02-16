@@ -13,4 +13,15 @@ const fetchData = (page) => {
     .catch((error) => console.log(error));
 };
 
-export { fetchData };
+const fetchDetails = (id) => {
+  return fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.message);
+      }
+      return response.json();
+    })
+    .catch((error) => console.log(error));
+};
+
+export { fetchData, fetchDetails };
